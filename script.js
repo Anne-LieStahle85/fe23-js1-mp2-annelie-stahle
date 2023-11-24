@@ -18,7 +18,6 @@ const spela = ["sten", "sax", "påse"];
 let playButton = document.querySelector("#option");
 playButton.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
-    console.log(event.target.tagName);
     const computerChoice = Math.floor(Math.random() * spela.length);
 
     document.querySelector(".playerText").innerText =
