@@ -1,15 +1,23 @@
 let playerScore = 0;
 let computerScore = 0;
 
-//Här skriver användaren in sitt namn o namnet ändras
+/*Här skriver användaren in sitt namn o namnet ändras.
+tagit bort funktionen på dom andra knapparna så spelet 
+startar inte förrän spelaren skrivit sitt namn.
+*/
 const btn = document.querySelector("#btn");
 let playerName = document.querySelector("#names");
+
+disableButtons(".optionsContainer button");
 
 btn.addEventListener("click", (e) => {
   e.preventDefault();
   let player = document.querySelector("input").value;
 
   playerName.innerText = player;
+
+  disableButtons("form button");
+  enableButtons(".optionsContainer button");
 });
 
 /*Här ska spelaren välja sten,sax eller påse och datorn slumpar ett val.
@@ -26,8 +34,9 @@ playButton.addEventListener("click", (event) => {
       "Datorn valde " + spela[computerChoice];
 
     /*Här jämför jag först om valen blir lika i if-satsen,sen i else if så
-  jämför jag när alternativen blir att spelaren vinner, och i else så blir
-  alla andra fall att datorn vinner */
+    jämför jag när alternativen blir att spelaren vinner, och i else så blir
+    alla andra fall att datorn vinner.
+     */
 
     if (event.target.id == computerChoice) {
       console.log(event.target.id, computerChoice);
@@ -49,7 +58,9 @@ playButton.addEventListener("click", (event) => {
       if (playerScore == 3) {
         document.querySelector(".winner").innerText =
           "Vinnaren är:\n" + playerName.textContent;
-        disableButtons();
+
+        disableButtons(".optionsContainer button");
+        promptRestart();
       }
     } else {
       console.log("datorn vinner");
@@ -60,20 +71,32 @@ playButton.addEventListener("click", (event) => {
         "Datorns poäng: " + computerScore;
       if (computerScore == 3) {
         document.querySelector(".winner").innerText = "Vinnaren är:\n Datorn";
-        disableButtons();
+        disableButtons(".optionsContainer button");
+        promptRestart();
       }
     }
   }
 });
 
 //När någon av spelarna har fått 3 poäng så slutar knapparna att funka
-function disableButtons() {
-  const buttons = document.querySelectorAll(".optionsContainer button");
+function disableButtons(selector) {
+  const buttons = document.querySelectorAll(selector);
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].setAttribute("disabled", "true");
   }
+}
 
-  //Här väljer spelaren om den vill spela igen och spelet startar om
+function enableButtons(selector) {
+  const buttons = document.querySelectorAll(selector);
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].removeAttribute("disabled");
+  }
+}
+
+/*När någan av spelarna vunnit så skapas det en knapp där spelaren väljer 
+spelaren om den vill spela igen och spelet startar om
+*/
+function promptRestart() {
   const playAgain = document.createElement("button");
   document.querySelector(".scoreWrapper").appendChild(playAgain);
   playAgain.innerText = "Spela igen!";
