@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Miniprojekt 2</title>
+  </head>
+  <body>
+    <!--Div som ska wrappa allt!
+        sen kommer min form där användaren skriver in användarnamn-->
+    <div class="container">
+      <h1>Sten Sax Påse</h1>
+
+      <div class="playerName">
+        <form>
+          <label for="name">Skriv ditt namn:</label>
+          <input
+            class="inputform"
+            type="text"
+            id="name"
+            placeholder="skriv ditt namn här:"
+          />
+          <button id="btn">Skicka</button>
+        </form>
+      </div>
+
+      <!--Här börjar bilderna med knappvalen-->
+
+      <div class="optionsContainer" id="option">
+        <div class="imgWrapper">
+          <img src="img/rock-paper-scissors-296854_1280.png" alt="sten" />
+          <button class="stoneButton" id="0">Sten</button>
+        </div>
+
+        <div class="imgWrapper">
+          <img src="img/rock-paper-scissors-296853_1280.png" alt="sax" />
+          <button class="scissorButton" id="1">Sax</button>
+        </div>
+
+        <div class="imgWrapper">
+          <img src="img/rock-paper-scissors-296855_1280.png" alt="påse" />
+          <button class="paperButton" id="2">Påse</button>
+        </div>
+      </div>
+      <!--Här slutar bilderna-->
+      <!--Här börjar användarnamn och resultaten-->
+      <div class="playerWrapper">
+        <div class="player">
+          <h2 id="names">Användarnamn</h2>
+          <p class="playerText">Detta valde du:</p>
+          <p class="score"></p>
+          <p class="playerCount">Dina poäng:</p>
+        </div>
+
+        <div class="computer">
+          <h2>Datorn</h2>
+          <p class="computerText">Detta valde datorn:</p>
+          <p class="score"></p>
+          <p class="computerCount">Datorns poäng:</p>
+        </div>
+      </div>
+      <!--Här skrivs vinnaren ut och spelaren kan välja att spela igen-->
+      <div class="scoreWrapper">
+        <div>
+          <h1 class="winner">Vinnaren är:</h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
